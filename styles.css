@@ -1,0 +1,33 @@
+/* 
+
+//Kyle Sinhart
+//Abagale Shope
+//Ruiwen Fu
+
+*/
+body {
+  background-color: white;
+  padding-left: 10%;
+  padding-right: 10%
+}
+
+table td{
+  width: 50%;
+  text-align: right;
+}
+
+img{
+  width: 70%;
+}
+
+.table{
+  width: 20%;
+  position: relative;
+  float: right;
+}
+
+.logo{
+  width: 20%;
+  position: absolute;
+  bottom: 10%;
+}
