@@ -17,7 +17,7 @@ $t1Data = $db->query($qStr);
 		}
 	</SCRIPT>
 -->
-  <title> Bullet order </title>
+  <title> Bullet Order </title>
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="styles.css">
@@ -53,6 +53,10 @@ $t1Data = $db->query($qStr);
 			<tr>
 				<td/>
 				<td><A HREF="http://www.cs.gettysburg.edu/~sinhky01/speedBullet/register.php">Register Now!</A></td>
+			</tr>
+		  <tr>
+				<td/>
+				<td><A HREF="http://www.cs.gettysburg.edu/~sinhky01/speedBullet/forgetPass.html">Forgot Password?</A></td>
 			</tr>
     </table>
   </form>
