@@ -20,7 +20,7 @@ $pass = $result1->fetch();
 print $pass['email'];
 if ($email == $pass['email']) {
   print "<h1>Password correct going back to home page</h1>";
-
+	$_SESSION["email"] = $pass['email'];
   $url = 'http://www.cs.gettysburg.edu/~furu01/bullet/profile.php';
   while (ob_get_status()){
       ob_end_clean();
