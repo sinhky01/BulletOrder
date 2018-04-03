@@ -21,7 +21,7 @@ print $pass['email'];
 if ($email == $pass['email']) {
   print "<h1>Password correct going back to home page</h1>";
 	$_SESSION["email"] = $pass['email'];
-  $url = 'http://www.cs.gettysburg.edu/~furu01/bullet/profile.php';
+  $url = phpLink('profile.php');
   while (ob_get_status()){
       ob_end_clean();
   }
@@ -30,7 +30,7 @@ if ($email == $pass['email']) {
 }
 else{
   print "<h1>Password incorrect going back to home page</h1>";
-  $url = 'http://www.cs.gettysburg.edu/~furu01/bullet/landing.php?password=-1';
+  $url = phpLink('landing.php?password=-1');
   while (ob_get_status()){
       ob_end_clean();
   }
@@ -39,6 +39,17 @@ else{
 
 
 ?>
+<?php
+function phpLink($page){
+    $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    $link_element = explode("/", $actual_link);
+    $curr_page = $link_element[5];
+    $page_link = str_replace($curr_page,$page,$actual_link);
+    echo $page_link;
+    return $page_link;
+}
+?>
+
 
 
 <?php

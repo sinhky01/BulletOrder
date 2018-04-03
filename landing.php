@@ -17,6 +17,15 @@ $t1Data = $db->query($qStr);
 function phpAlert($msg) {
     echo '<script type="text/javascript">alert("' . $msg . '")</script>';
 }
+
+function phpLink($page){
+    $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    $link_element = explode("/", $actual_link);
+    $curr_page = $link_element[5];
+    $page_link = str_replace($curr_page,$page,$actual_link);
+    echo $page_link;
+    return $page_link;
+}
 ?>
 
 <html>
@@ -63,11 +72,11 @@ function phpAlert($msg) {
       </tr>
 			<tr>
 				<td/>
-				<td><A HREF="http://www.cs.gettysburg.edu/~furu01/bullet/register.php">Register Now!</A></td>
+				<td><A HREF="<?php phpLink("register.php");?>">Register Now!</A></td>
 			</tr>
 		  <tr>
 				<td/>
-				<td><A HREF="http://www.cs.gettysburg.edu/~furu01/bullet/forgetPass.html">Forgot Password?</A></td>
+				<td><A HREF="<?php phpLink("forgetPass.html");?>">Forgot Password?</A></td>
 			</tr>
     </table>
   </form>

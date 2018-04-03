@@ -17,7 +17,7 @@
 		$newpass .= $newchar;
 	}
 
-	$content = "You have just reset your password. Your new password is: " . $newpass . " . To update your password, got to http://cs.gettysburg.edu/~sinhky01/speedBullet/changePasswordForm.php";
+	$content = "You have just reset your password. Your new password is: " . $newpass . " . To update your password, got to " . phpLink("changePasswordForm.php");
 
 	$pass_update = "UPDATE customer SET password=MD5('" . $newpass . "') WHERE email='" . $to . "';";
 
@@ -40,4 +40,15 @@
 	echo $newpass;
 	echo $content;
 	?>
+	<?php
+	function phpLink($page){
+	    $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+	    $link_element = explode("/", $actual_link);
+	    $curr_page = $link_element[5];
+	    $page_link = str_replace($curr_page,$page,$actual_link);
+	    echo $page_link;
+	    return $page_link;
+	}
+	?>
+
 </HTML>
