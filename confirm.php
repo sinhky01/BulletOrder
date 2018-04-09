@@ -23,6 +23,7 @@ if(isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['key']) && !e
   }
   else{
     print "<h1>Verification failed</h1>";
+    // link to login page
   }
 }else{
   print "<h1>invalid verification link</h1>";

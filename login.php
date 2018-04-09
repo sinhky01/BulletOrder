@@ -22,20 +22,20 @@ if ($email == $pass['email']) {
   print "<h1>Password correct going back to home page</h1>";
 	$_SESSION["email"] = $pass['email'];
   $url = phpLink('profile.php');
-  while (ob_get_status()){
-      ob_end_clean();
-  }
-  header( "Location: $url" );
-
+}
+else if ($pass['email'] != null){
+  print "<h1>Password incorrect going back to home page</h1>";
+  $url = phpLink('landing.php?password=-1&email='.$email);
 }
 else{
-  print "<h1>Password incorrect going back to home page</h1>";
-  $url = phpLink('landing.php?password=-1');
-  while (ob_get_status()){
-      ob_end_clean();
-  }
-  header( "Location: $url" );
+  print "<h1>Unregistered email going back to home page</h1>";
+  $url = phpLink('landing.php?password=-2');
 }
+
+while (ob_get_status()){
+    ob_end_clean();
+}
+header( "Location: $url" );
 
 
 ?>

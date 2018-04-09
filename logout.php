@@ -19,7 +19,6 @@ function phpLink($page){
     $link_element = explode("/", $actual_link);
     $curr_page = $link_element[5];
     $page_link = str_replace($curr_page,$page,$actual_link);
-    echo $page_link;
     return $page_link;
 }
 ?>

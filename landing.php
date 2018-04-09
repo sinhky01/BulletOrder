@@ -4,10 +4,10 @@
 include_once("db_connect.php"); //$db
 
 if(isset($_GET['password']) && !empty($_GET['password'])){
-  $pass = mysql_escape_string($_GET['password']); // Set email variable
-  if ($pass == -1){
-    phpAlert("invalid password!");
-  }
+  $success = mysql_escape_string($_GET['password']); // Set email variable
+}
+if(isset($_GET['email']) && !empty($_GET['email'])){
+  $f_email = mysql_escape_string($_GET['email']);
 }
 $qStr = "SELECT * FROM customer;";
 $t1Data = $db->query($qStr);
@@ -23,7 +23,6 @@ function phpLink($page){
     $link_element = explode("/", $actual_link);
     $curr_page = $link_element[5];
     $page_link = str_replace($curr_page,$page,$actual_link);
-    echo $page_link;
     return $page_link;
 }
 ?>
@@ -50,14 +49,23 @@ function phpLink($page){
   </div>
 
   <form method = "post" action = "login.php">
-    <table class = "table">
+    <table class = "table">    echo $page_link;
+
+      <tr>
+        <td colspan="3" style="color:red;"> <?php
+        if ($success == -1){
+          echo "Invalid Email ! Retry !";}
+        else if ($success == -2){
+          echo "Invalid Password ! Retry !";}
+          ?></td>
+      </tr>
       <tr>
         <td/>
         <td> Login </td>
       </tr>
       <tr>
         <td> Email </td>
-        <td><input type = 'text' name = 'email' placeholder = 'enter your email' /></td>
+        <td><input type = 'text' name = 'email' placeholder = 'enter your email' autocomplete="on" value = '<?php echo $f_email;?>'/></td>
       </tr>
       <tr>
         <td> Password </td>
@@ -72,11 +80,11 @@ function phpLink($page){
       </tr>
 			<tr>
 				<td/>
-				<td><A HREF="<?php phpLink("register.php");?>">Register Now!</A></td>
+				<td><A HREF="<?php echo phpLink("register.php");?>">Register Now!</A></td>
 			</tr>
 		  <tr>
 				<td/>
-				<td><A HREF="<?php phpLink("forgetPass.html");?>">Forgot Password?</A></td>
+				<td><A HREF="<?php echo phpLink("forgetPass.html");?>">Forgot Password?</A></td>
 			</tr>
     </table>
   </form>
