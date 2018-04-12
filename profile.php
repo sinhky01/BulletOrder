@@ -81,6 +81,9 @@ echo "<P>Useremail: " .  $email  . "</P>\n";
 							<ul>
 								<li> <a href="logout.php">Logout</a></li>
 							</ul>
+							<ul>
+								<li> <a href="past_orders.php">Past Orders</a></li>
+							</ul>
 
 						</DIV>
 						<DIV class="col-md-4"><P class="gray" >CS360 Spring 2018</P></DIV>

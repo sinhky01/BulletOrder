@@ -16,10 +16,11 @@
 		$newchar = rand(0,9);
 		$newpass .= $newchar;
 	}
+	$newpass = MD5($newpass);
 
-	$content = "You have just reset your password. Your new password is: " . $newpass . " . To update your password, got to " . phpLink("changePasswordForm.php");
+	$content = "You have just reset your password. To update your password, got to " . phpLink("changePasswordForm.php?link=". $newpass );
 
-	$pass_update = "UPDATE customer SET password=MD5('" . $newpass . "') WHERE email='" . $to . "';";
+	$pass_update = "UPDATE customer SET reset='" . $newpass . "' WHERE email='" . $to . "';";
 
 	$result=$db->query($pass_update);
 
@@ -30,15 +31,11 @@
 	$result2  = mail($to, $subject, $content, $header);
 
 	if ($result2 == FALSE) {
-		echo "<P>Comment was not sent</P>\n";
+		echo "<P>Invalid email address ! Retry !</P>\n";
 	}
 	else {
-		echo "<P>Comment was sent successfully</P>\n";
+		echo "<P>We have reset your password, please check your email! </P>\n";
 	}
-
-
-	echo $newpass;
-	echo $content;
 	?>
 	<?php
 	function phpLink($page){
@@ -46,7 +43,6 @@
 	    $link_element = explode("/", $actual_link);
 	    $curr_page = $link_element[5];
 	    $page_link = str_replace($curr_page,$page,$actual_link);
-	    echo $page_link;
 	    return $page_link;
 	}
 	?>
