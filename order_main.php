@@ -4,7 +4,6 @@ $qStr = "SELECT DISTINCT category FROM food_category;";
 $t1Data = $db->query($qStr);
 
 
-
 ?>
 
 <html>
