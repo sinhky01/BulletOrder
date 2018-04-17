@@ -2,7 +2,6 @@
 session_start();
 $email = $_SESSION["email"];
 echo "<P>Useremail: " .  $email  . "</P>\n";
-
 ?>
 
 
@@ -21,7 +20,6 @@ echo "<P>Useremail: " .  $email  . "</P>\n";
 
 					<STYLE type="text/css">
 					/*for all paragraphs*/
-
 					p {
 						padding: 100px;
 						background: #002F6C;
@@ -29,7 +27,6 @@ echo "<P>Useremail: " .  $email  . "</P>\n";
 						font-family: arial;
 						text-align: center;
 					}
-
 					p.gray {
 						padding: 50px;
 						font-size: 25px;
@@ -38,31 +35,25 @@ echo "<P>Useremail: " .  $email  . "</P>\n";
 						background: #dbdfe5;
 						font-family: arial;
 					}
-
 					h1 {
 						text-align: center;
 						color: #002F6C;
 						font-family: arial;
 					}
-
 					body {
 						text-align: center;
 						font-family: arial;
 					}
-
 					input {
 						margin-bottom: 8px;
 					}
-
 					form {
 						background: #002F6C;
 						font-family: arial;
 						color: white;
 						font-weight: bold;
 						padding: 250px;
-
 					}
-
 				</STYLE>
 
 			</HEAD>
@@ -74,9 +65,16 @@ echo "<P>Useremail: " .  $email  . "</P>\n";
 				<DIV class="container">
 
 					<DIV class="row">
-						<DIV class="col-md-8">
+						<DIV class="col-md-4"><P class="gray" >(profile picture will go here)</P></DIV>
+						<DIV class="col-md-4">
 							<ul>
 								<li> <a href="changePasswordForm.php">Change Password</a></li>
+							</ul>
+							<ul>
+								<li> <a href="changePhoneForm.php">Update Phone Number</a></li>
+							</ul>
+							<ul>
+								<li> <a href="changePhotoForm.php">Update Profile Picture</a></li>
 							</ul>
 							<ul>
 								<li> <a href="logout.php">Logout</a></li>
@@ -92,4 +90,4 @@ echo "<P>Useremail: " .  $email  . "</P>\n";
 				</DIV> <!-- closes container -->
 
 			</BODY>
-		</HTML>
+</HTML>
