@@ -49,7 +49,7 @@ function phpLink($page){
   </div>
 
   <form method = "post" action = "login.php">
-    <table class = "table">    echo $page_link;
+    <table class = "table"> 
 
       <tr>
         <td colspan="3" style="color:red;"> <?php

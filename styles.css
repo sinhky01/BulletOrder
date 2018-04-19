@@ -1,4 +1,4 @@
-/* 
+/*
 
 //Kyle Sinhart
 //Abagale Shope
@@ -6,6 +6,7 @@
 
 */
 body {
+  background-image: url("bulletbg.jpeg");
   background-color: white;
   padding-left: 10%;
   padding-right: 10%

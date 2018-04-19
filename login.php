@@ -1,6 +1,6 @@
 <?php
 
-ob_start(); //ensure everything is done
+// ob_start(); //ensure everything is done
 session_start(); //login session
 
 include_once('db_connect.php');
@@ -31,10 +31,9 @@ else{
   print "<h1>Unregistered email going back to home page</h1>";
   $url = phpLink('landing.php?password=-2');
 }
-
-while (ob_get_status()){
-    ob_end_clean();
-}
+// while (ob_get_status()){
+//     ob_end_clean();
+// }
 header( "Location: $url" );
 
 
