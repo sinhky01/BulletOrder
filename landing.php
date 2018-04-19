@@ -40,16 +40,42 @@ function phpLink($page){
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="styles.css">
+  <STYLE type="text/css">
+	h2 {
+		text-align: center;
+		color: #00437C;
+		font-family: arial;
+		font-size: 58px;
+	}
+	table {
+ 		width: 20%;
+ 		position: relative;
+  		float: right;
+		color: #776E64;
+	}
+	table td{
+  		width: 50%;
+  		text-align: right;
+	}
+	body {
+		height: 100%;
+   		background-repeat: no-repeat;
+   		background-attachment: scroll;
+	}
+	.bg {
+		height: 100%;
+	}
+  </STYLE>
 </head>
 <body>
-  <h2>Bullet Order</h2>
+  <h2>Welcome to Speeding Bullet!</h2>
 
   <div class = "logo">
     <img src="logo.png" alt="Logo">
-  </div>
+  </div> 
 
   <form method = "post" action = "login.php">
-    <table class = "table"> 
+    <table class = "table">    echo $page_link;
 
       <tr>
         <td colspan="3" style="color:red;"> <?php
