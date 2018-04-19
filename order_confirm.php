@@ -18,25 +18,27 @@ $list = $_POST['cborder'];
 </head>
 
 <body>
-  <form method="post" action="new_order.php">
+  <form method="post" action="order_confirm.php">
     <table align="center" style="border: 1px solid black;width:60%;cellspacing = 0; cellpadding = 5">
       <tr>
         <th>Order List</th>
         <th>Price</th>
-        <th>Confirm</th>
+        <th>Remove</th>
       </tr>
             <?php
             if ($list != null){
+              $total_price = 0;
               foreach ($list AS $id){
                 $qStr = "SELECT name, price FROM food WHERE food.food_id = ".$id.";";
                 $t1Data = $db->query($qStr);
                 $data = $t1Data->fetch();
                 $name = $data['name'];
                 $price = $data['price'];
+                $total_price = $total_price + (int)$price;
                 print "<tr>";
                 print "<td>$name</td>\n";
                 print "<td>$price</td>\n";
-                print "<TD><Input type = 'checkbox' name = 'cbconfirm[]' value = '" . $id . "'></TD>\n";
+                print "<TD><Input type = 'checkbox' name = 'cborder[]' value = '" . $id . "' checked ></TD>\n";
                 print "</tr>";
               }
             }
@@ -47,9 +49,9 @@ $list = $_POST['cborder'];
             }
             ?>
           </tr>
-          <tr colspan="3">total = </tr>
+          <tr colspan="3">total = <?php echo $total_price; ?></tr>
         </table>
-        <center><input type = "submit" value = "submit order"></center>
+        <center><input type = "submit" value = "Refresh"></center>
       </form>
 
     </body>
