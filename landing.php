@@ -46,6 +46,7 @@ function phpLink($page){
 		color: white;
 		font-family: verdana;
 		font-size: 58px;
+		text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 	}
 	h4 {
 		text-align: right;
