@@ -1,5 +1,17 @@
 <?php
 include_once('db_connect.php');
+
+session_start();
+$email = $_SESSION["email"];
+echo "<P>Useremail: " .  $email  . "</P>\n";
+if ($email == NULL){
+  print "<h1>Please login first!!!</h1>";
+  $url = phpLink('landing.php?password=-3');
+  header( "Location: $url" );
+}
+
+
+
 $cate = $_POST['select_cate'];
 $qStr = "SELECT food.food_id, name, price, picture, category FROM food LEFT JOIN food_category ON food.food_id = food_category.food_id WHERE category = '".$cate."';";
 $t1Data = $db->query($qStr);

@@ -1,5 +1,15 @@
 <?php
 include_once('db_connect.php');
+session_start();
+$email = $_SESSION["email"];
+echo "<P>Useremail: " .  $email  . "</P>\n";
+if ($email == NULL){
+  print "<h1>Please login first!!!</h1>";
+  $url = phpLink('landing.php?password=-3');
+  header( "Location: $url" );
+}
+
+
 $qStr = "SELECT DISTINCT category FROM food_category;";
 $t1Data = $db->query($qStr);
 

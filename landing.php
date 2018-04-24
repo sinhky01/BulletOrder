@@ -72,10 +72,10 @@ function phpLink($page){
 
   <div class = "logo">
     <img src="logo.png" alt="Logo">
-  </div> 
+  </div>
 
   <form method = "post" action = "login.php">
-    <table class = "table">    
+    <table class = "table">
 
       <tr>
         <td colspan="3" style="color:red;"> <?php
@@ -83,6 +83,8 @@ function phpLink($page){
           echo "Invalid Email ! Retry !";}
         else if ($success == -2){
           echo "Invalid Password ! Retry !";}
+        else if ($success == -3){
+          echo "Please login first~!";}
           ?></td>
       </tr>
       <tr>

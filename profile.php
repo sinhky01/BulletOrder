@@ -77,6 +77,9 @@ echo "<P>Useremail: " .  $email  . "</P>\n";
 								<li> <a href="changePhotoForm.php">Update Profile Picture</a></li>
 							</ul>
 							<ul>
+								<li> <a href="order_main.php">make an order!</a></li>
+							</ul>
+							<ul>
 								<li> <a href="logout.php">Logout</a></li>
 							</ul>
 							<ul>

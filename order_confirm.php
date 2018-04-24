@@ -1,5 +1,17 @@
 <?php
 include_once('db_connect.php');
+
+session_start();
+$email = $_SESSION["email"];
+echo "<P>Useremail: " .  $email  . "</P>\n";
+if ($email == NULL){
+  print "<h1>Please login first!!!</h1>";
+  $url = phpLink('landing.php?password=-3');
+  header( "Location: $url" );
+}
+
+
+
 $list = $_POST['cborder'];
 
 ?>
@@ -51,7 +63,9 @@ $list = $_POST['cborder'];
           </tr>
           <tr colspan="3">total = <?php echo $total_price; ?></tr>
         </table>
-        <center><input type = "submit" value = "Refresh"></center>
+        <center><input type = "submit" value = "Refresh">
+        <input type = "submit" value = "Confirm" formaction='new_order.php'></center>
+
       </form>
 
     </body>
