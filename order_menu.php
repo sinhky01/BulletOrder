@@ -3,25 +3,36 @@ include_once('db_connect.php');
 $cate = $_POST['select_cate'];
 $qStr = "SELECT food.food_id, name, price, picture, category FROM food LEFT JOIN food_category ON food.food_id = food_category.food_id WHERE category = '".$cate."';";
 $t1Data = $db->query($qStr);
-
 ?>
 <html>
 <head>
   <title>Bullet order Menu</title>
   <style type="text/css">
-  table, th, td {
-    border: 1px solid black;
+  th, td {
+	color: #002F6C;
+	padding: 20px;
     align: center;
+	border: none;
+
+  }
+  table {
+	border-collapse: collapse;
+	border: none;
+	align: center;
   }
   .submit_button{
     float: center;
   }
+	body {
+	background-color: #dbdfe5;
+	}	
+  
 </style>
 </head>
 
 <body>
   <form method="post" action="order_confirm.php">
-    <table align="center" style="border: 1px solid black;width:60%;cellspacing = 0; cellpadding = 5">
+    <table align="center" style="border:none;width:80%;cellspacing = 0; cellpadding = 5">
       <tr>
         <th>food category</th>
         <th>food name</th>
