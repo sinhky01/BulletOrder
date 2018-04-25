@@ -1,34 +1,25 @@
 <?php
 include_once('db_connect.php');
-
-session_start();
-$email = $_SESSION["email"];
-echo "<P>Useremail: " .  $email  . "</P>\n";
-if ($email == NULL){
-  print "<h1>Please login first!!!</h1>";
-  $url = phpLink('landing.php?password=-3');
-  header( "Location: $url" );
-}
-
-
-
 $cate = $_POST['select_cate'];
 $qStr = "SELECT food.food_id, name, price, picture, category FROM food LEFT JOIN food_category ON food.food_id = food_category.food_id WHERE category = '".$cate."';";
 $t1Data = $db->query($qStr);
 ?>
 <html>
 <head>
-  <title>Bullet order Menu</title>
+  <title>Bullet Order Menu</title>
   <style type="text/css">
   th, td {
 	color: #002F6C;
 	padding: 20px;
-    align: center;
+   	align: center;
 	border: none;
-<<<<<<< HEAD
-=======
-
->>>>>>> 9adef8e9ca950fe30a5255d24c49451c2eb2b99d
+	border-bottom: 1px solid #d3d3d3;
+  }
+  td {
+	text-align: center;
+  }
+  tr:hover {
+	background-color: #f3f3f3;
   }
   table {
 	border-collapse: collapse;
@@ -36,29 +27,19 @@ $t1Data = $db->query($qStr);
 	align: center;
   }
   .submit_button{
-    float: center;
+    	float: center;
   }
-	body {
-	background-color: #dbdfe5;
-<<<<<<< HEAD
-	}
-  </style>
-=======
-	}	
+  body {
+	background-color: white;
+  }	
   
 </style>
->>>>>>> 9adef8e9ca950fe30a5255d24c49451c2eb2b99d
 </head>
 
 <body>
   <form method="post" action="order_confirm.php">
-<<<<<<< HEAD
- <table align="center" style="border:none;width:80%;cellspacing = 0; cellpadding = 5">
-         <tr>
-=======
-    <table align="center" style="border:none;width:80%;cellspacing = 0; cellpadding = 5">
+    <table align="center" style="border:none;width:90%;cellspacing = 0; cellpadding = 5">
       <tr>
->>>>>>> 9adef8e9ca950fe30a5255d24c49451c2eb2b99d
         <th>food category</th>
         <th>food name</th>
         <th>images</th>
@@ -91,6 +72,7 @@ $t1Data = $db->query($qStr);
             ?>
           </tr>
         </table>
+</br> </br>
         <center><input type = "submit" value = "submit order"></center>
       </form>
 
