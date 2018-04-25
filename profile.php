@@ -126,7 +126,9 @@ else {
 				</ul> 
 				</DIV>
 				<DIV class="row">
+					</br></br>
 					<H1> Your Speeding Bullet Profile </H1>
+				</br></br>
 				</DIV>
 				<DIV class="container">
 
