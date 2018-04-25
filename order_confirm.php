@@ -1,19 +1,6 @@
 <?php
 include_once('db_connect.php');
-
-session_start();
-$email = $_SESSION["email"];
-echo "<P>Useremail: " .  $email  . "</P>\n";
-if ($email == NULL){
-  print "<h1>Please login first!!!</h1>";
-  $url = phpLink('landing.php?password=-3');
-  header( "Location: $url" );
-}
-
-
-
 $list = $_POST['cborder'];
-
 ?>
 <html>
 <head>
@@ -22,50 +9,42 @@ $list = $_POST['cborder'];
   th, td {
 	color: #002F6C;
 	padding: 20px;
-    align: center;
+   	align: center;
 	border: none;
-<<<<<<< HEAD
-=======
-
->>>>>>> 9adef8e9ca950fe30a5255d24c49451c2eb2b99d
+	border-bottom: 1px solid #d3d3d3;
+  }
+  td {
+	text-align: center;
+  }
+  tr:hover {
+	background-color: #f3f3f3;
   }
   table {
 	border-collapse: collapse;
 	border: none;
 	align: center;
-<<<<<<< HEAD
-=======
   }
   .submit_button{
-    float: center;
->>>>>>> 9adef8e9ca950fe30a5255d24c49451c2eb2b99d
+    	float: center;
   }
-	body {
-	background-color: #dbdfe5;
-	}
-  .submit_button{
-    float: center;
-  }
-	body {
-	background-color: #dbdfe5;
-	}	</style>
+  body {
+	background-color: white;
+  }	
+  
+</style>
 </head>
 
 <body>
   <form method="post" action="order_confirm.php">
-<<<<<<< HEAD
- <table align="center" style="border:none;width:80%;cellspacing = 0; cellpadding = 5">
-         <tr>
+    <table align="center" style="border:none;width:80%;cellspacing = 0; cellpadding = 5">
+
+            <?php
+            if ($list != null){
+		print "      <tr>
         <th>Order List</th>
         <th>Price</th>
         <th>Remove</th>
-      </tr>
-=======
-    <table align="center" style="border:none;width:80%;cellspacing = 0; cellpadding = 5">
->>>>>>> 9adef8e9ca950fe30a5255d24c49451c2eb2b99d
-            <?php
-            if ($list != null){
-              		print " <tr> <th>Order List</th> <th>Price</th> <th>Remove</th> </tr>";
+      </tr>";
               $total_price = 0;
               foreach ($list AS $id){
                 $qStr = "SELECT name, price FROM food WHERE food.food_id = ".$id.";";
@@ -90,9 +69,9 @@ $list = $_POST['cborder'];
           </tr>
           <tr colspan="3">total = <?php echo $total_price; ?></tr>
         </table>
+</br></br>
         <center><input type = "submit" value = "Refresh">
-        <input type = "submit" value = "Confirm" formaction='new_order.php'></center>
-
+ <input type = "submit" value = "Confirm" formaction='new_order.php'></center>
       </form>
 
     </body>
