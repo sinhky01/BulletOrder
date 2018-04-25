@@ -43,9 +43,19 @@ function phpLink($page){
   <STYLE type="text/css">
 	h2 {
 		text-align: center;
-		color: #00437C;
-		font-family: arial;
+		color: white;
+		font-family: verdana;
 		font-size: 58px;
+		text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	}
+	h4 {
+		text-align: right;
+		color: white;
+		font-family: verdana;
+	}
+	A {
+		color: white;
+		font-family: verdana;
 	}
 	table {
  		width: 20%;
@@ -68,7 +78,9 @@ function phpLink($page){
   </STYLE>
 </head>
 <body>
-  <h2>Welcome to Speeding Bullet!</h2>
+ <h2>Welcome to Speeding Bullet!</h2>
+</br>
+	<A href="http://www.gettysburg.edu/current_students/menu.dot"><h4>Click to see today's menu</h4></A>
 
   <div class = "logo">
     <img src="logo.png" alt="Logo">
@@ -87,10 +99,10 @@ function phpLink($page){
           echo "Please login first~!";}
           ?></td>
       </tr>
-      <tr>
+     <!-- <tr>
         <td/>
         <td> Login </td>
-      </tr>
+      </tr> -->
       <tr>
         <td> Email </td>
         <td><input type = 'text' name = 'email' placeholder = 'enter your email' autocomplete="on" value = '<?php echo $f_email;?>'/></td>

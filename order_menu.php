@@ -15,7 +15,6 @@ if ($email == NULL){
 $cate = $_POST['select_cate'];
 $qStr = "SELECT food.food_id, name, price, picture, category FROM food LEFT JOIN food_category ON food.food_id = food_category.food_id WHERE category = '".$cate."';";
 $t1Data = $db->query($qStr);
-
 ?>
 <html>
 <head>
@@ -26,6 +25,10 @@ $t1Data = $db->query($qStr);
 	padding: 20px;
     align: center;
 	border: none;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9adef8e9ca950fe30a5255d24c49451c2eb2b99d
   }
   table {
 	border-collapse: collapse;
@@ -37,14 +40,25 @@ $t1Data = $db->query($qStr);
   }
 	body {
 	background-color: #dbdfe5;
+<<<<<<< HEAD
 	}
   </style>
+=======
+	}	
+  
+</style>
+>>>>>>> 9adef8e9ca950fe30a5255d24c49451c2eb2b99d
 </head>
 
 <body>
   <form method="post" action="order_confirm.php">
+<<<<<<< HEAD
  <table align="center" style="border:none;width:80%;cellspacing = 0; cellpadding = 5">
          <tr>
+=======
+    <table align="center" style="border:none;width:80%;cellspacing = 0; cellpadding = 5">
+      <tr>
+>>>>>>> 9adef8e9ca950fe30a5255d24c49451c2eb2b99d
         <th>food category</th>
         <th>food name</th>
         <th>images</th>

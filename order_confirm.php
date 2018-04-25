@@ -24,12 +24,25 @@ $list = $_POST['cborder'];
 	padding: 20px;
     align: center;
 	border: none;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9adef8e9ca950fe30a5255d24c49451c2eb2b99d
   }
   table {
 	border-collapse: collapse;
 	border: none;
 	align: center;
+<<<<<<< HEAD
+=======
   }
+  .submit_button{
+    float: center;
+>>>>>>> 9adef8e9ca950fe30a5255d24c49451c2eb2b99d
+  }
+	body {
+	background-color: #dbdfe5;
+	}
   .submit_button{
     float: center;
   }
@@ -40,14 +53,19 @@ $list = $_POST['cborder'];
 
 <body>
   <form method="post" action="order_confirm.php">
+<<<<<<< HEAD
  <table align="center" style="border:none;width:80%;cellspacing = 0; cellpadding = 5">
          <tr>
         <th>Order List</th>
         <th>Price</th>
         <th>Remove</th>
       </tr>
+=======
+    <table align="center" style="border:none;width:80%;cellspacing = 0; cellpadding = 5">
+>>>>>>> 9adef8e9ca950fe30a5255d24c49451c2eb2b99d
             <?php
             if ($list != null){
+              		print " <tr> <th>Order List</th> <th>Price</th> <th>Remove</th> </tr>";
               $total_price = 0;
               foreach ($list AS $id){
                 $qStr = "SELECT name, price FROM food WHERE food.food_id = ".$id.";";
@@ -64,7 +82,7 @@ $list = $_POST['cborder'];
               }
             }
             else{
-              print "You have not select anything! ";
+              print "You have not selected anything! ";
               // $url = phpLink('order_main.php');
               // header( "Location: $url" );
             }

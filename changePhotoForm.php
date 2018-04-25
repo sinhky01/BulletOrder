@@ -73,7 +73,7 @@ echo "<P>Useremail: " .  $email  . "</P>\n";
 								action="updateProfilePhoto.php"
 								enctype="multipart/form-data">
 
-								<INPUT type="file" name="profile picture"/> <BR /><BR />
+								<INPUT type="file" name="profilepicture"/> <BR /><BR />
 
 								<INPUT type="submit" value="Change my photo!"/>
 
