@@ -1,7 +1,25 @@
 <?php
+include_once('db_connect.php');
 session_start();
 $email = $_SESSION["email"];
-echo "<P>Useremail: " .  $email  . "</P>\n";
+//echo "<P>Useremail: " .  $email  . "</P>\n";
+
+$str = "SELECT * FROM customer WHERE email='" . $email . "';";
+
+
+$result = $db->query($str);
+$user = $result->fetch();
+//print_r( $user);
+
+if ($result == FALSE) {
+//	echo "here";
+}
+else {
+	$phoneNum = $user['phonenum'];
+	$balance = $user['balance'];
+	
+}
+
 ?>
 
 
@@ -26,6 +44,9 @@ echo "<P>Useremail: " .  $email  . "</P>\n";
 						color: white;
 						font-family: arial;
 						text-align: center;
+					}	
+					body {
+						color: #002F6C;
 					}
 					p.gray {
 						padding: 50px;
@@ -39,6 +60,7 @@ echo "<P>Useremail: " .  $email  . "</P>\n";
 						text-align: center;
 						color: #002F6C;
 						font-family: arial;
+						font-size: 72px;
 					}
 					body {
 						text-align: center;
@@ -54,41 +76,88 @@ echo "<P>Useremail: " .  $email  . "</P>\n";
 						font-weight: bold;
 						padding: 250px;
 					}
+					td {
+						padding-top: 12px;
+						padding-bottom: 9px;
+					}
+					table td+td {
+						text-align: right;
+					}
+					table {
+						font-size: 20px;
+						width: 100%;
+					}
+					ul {
+						list-style-type: none;
+						margin: 0;
+						padding: 0;
+						overflow: hidden;	
+						color: white;	
+						background-color: #002F6C;
+					}
+					li {
+
+						float: right;	
+						background-color: #002F6C;
+						color: white;	
+
+					}
+					li a {
+						display: block;
+						padding: 20px 20px;
+						text-align: center;
+						color: white;
+					}
+					li a:hover {
+						background-color:  #dbdfe5;
+					}
+					.active {
+						background-color: orange;
+					}
 				</STYLE>
 
 			</HEAD>
 
-			<BODY>
-				<DIV>
+			<BODY>  <DIV class="row"> 
+					 <ul>
+  				<li><a href="order_main.php">Order Page</a></li>
+  				<li><a href="past_orders.php">Past Orders</a></li>
+  				<li><a href="profile.php">Profile</a></li>
+				</ul> 
+				</DIV>
+				<DIV class="row">
 					<H1> Your Speeding Bullet Profile </H1>
 				</DIV>
 				<DIV class="container">
 
 					<DIV class="row">
 						<DIV class="col-md-4"><P class="gray" >(profile picture will go here)</P></DIV>
-						<DIV class="col-md-4">
-							<ul>
-								<li> <a href="changePasswordForm.php">Change Password</a></li>
-							</ul>
-							<ul>
-								<li> <a href="changePhoneForm.php">Update Phone Number</a></li>
-							</ul>
-							<ul>
-								<li> <a href="changePhotoForm.php">Update Profile Picture</a></li>
-							</ul>
-							<ul>
-								<li> <a href="order_main.php">make an order!</a></li>
-							</ul>
-							<ul>
-								<li> <a href="logout.php">Logout</a></li>
-							</ul>
-							<ul>
-								<li> <a href="past_orders.php">Past Orders</a></li>
-							</ul>
+						<DIV class="col-md-8"> <table>
+							<tr><td> Current Balance: $<?php echo $balance ?> </td>
+								<td> <a href="update_balance.php">Add Money</a></td>
+							</tr>
+							<tr> <td> Phone number: <?php echo $phoneNum ?> </td>
+								<td> <a href="changePhoneForm.php">Update Phone Number</a></td>
+							</tr>
+							<tr>
+							<td>  </td>
+							<td> <a href="changePasswordForm.php">Change Password</a></td></tr>
 
-						</DIV>
-						<DIV class="col-md-4"><P class="gray" >CS360 Spring 2018</P></DIV>
+							<tr><td>  </td>
+								<td> <a href="changePhotoForm.php">Update Profile Picture</a></td>
+							</tr>
+
+							<tr><td>  </td>
+								<td> <a href="past_orders.php">Past Orders</a></td>
+							</tr>
+							<tr><td>  </td>
+								<td> <a href="logout.php">Logout</a></td>
+							</tr>
+						</table></DIV>
 					</DIV> <!-- closes row 1 -->
+					<DIV class="row">
+						<DIV class="col-md-12"><P class="gray" >CS360 Spring 2018</P></DIV>
+				</DIV> <!-- closes row 2 -->
 
 				</DIV> <!-- closes container -->
 
