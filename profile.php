@@ -49,8 +49,8 @@ else {
 						color: #002F6C;
 					}
 					p.gray {
-						padding: 50px;
-						font-size: 25px;
+						padding: 20px;
+						font-size: 15px;
 						font-weight: bold;
 						text-align: center;
 						background: #dbdfe5;
@@ -156,7 +156,7 @@ else {
 						</table></DIV>
 					</DIV> <!-- closes row 1 -->
 					<DIV class="row">
-						<DIV class="col-md-12"><P class="gray" >CS360 Spring 2018</P></DIV>
+						<DIV class="col-md-12"><P class="gray" >CS360 Spring 2018 </br> Abby Shope </br> Ruiwen Fu </br> Kyle</P></DIV>
 				</DIV> <!-- closes row 2 -->
 
 				</DIV> <!-- closes container -->
