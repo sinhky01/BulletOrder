@@ -1,33 +1,63 @@
 <?php
 include_once('db_connect.php');
-session_start();
-$email = $_SESSION["email"];
-echo "<P>Useremail: " .  $email  . "</P>\n";
-if ($email == NULL){
-  print "<h1>Please login first!!!</h1>";
-  $url = phpLink('landing.php?password=-3');
-  header( "Location: $url" );
-}
-
-
 $qStr = "SELECT DISTINCT category FROM food_category;";
 $t1Data = $db->query($qStr);
-
-
 ?>
 
 <html>
 <head>
-  <title>Bullet order page</title>
+  <title>Bullet Order Page</title>
+  <style type="text/css">
+	td {
+	padding-top: 12px;
+	padding-bottom: 9px;
+	}
+	table td+td {
+	text-align: right;
+	}
+	table {
+	font-size: 20px;
+	width: 100%;
+	}
+	ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;	
+	color: white;	
+	background-color: #002F6C;
+	}
+	li {
+	float: right;	
+	background-color: #002F6C;
+	color: white;	
+	}
+	li a {
+	display: block;
+	padding: 20px 20px;
+	text-align: center;
+	color: white;
+	}
+	li a:hover {
+	background-color:  #dbdfe5;
+	}
+</style>
 </head>
 
 <body>
+
+	 <ul>
+  				<li><a href="order_main.php">Order Page</a></li>
+  				<li><a href="past_orders.php">Past Orders</a></li>
+  				<li><a href="profile.php">Profile</a></li>
+				</ul> 
   <table>
     <tr>
       <th>Available types</th>
       <tr>
         <td>
           <form method="post" action="order_menu.php">
+		<div align="center">
             <?php
             if ($t1Data != FALSE){
               $nRows = $t1Data->rowCount();
@@ -43,7 +73,7 @@ $t1Data = $db->query($qStr);
             else{
               print "There is no food left";
             }
-            ?>
+            ?> </div>
           </form>
         </td>
       </table>
