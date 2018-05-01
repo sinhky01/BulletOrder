@@ -24,15 +24,17 @@ function addMenuItem($data){
 function deleteUser($data){
 	global $db;
 	
-	$email = $data['email'];
-
-	$str="DELETE FROM customer WHERE email='". $email ."';";
+	foreach ($_POST['cb'] AS $id){
+		$str="DELETE FROM customer WHERE id='". $id ."';";
 	
-	$result=$db->query($str);
+		$result=$db->query($str);
 
-	if ($result != FALSE ) {
-		print "<p>user " . $name . " has been deleted.</p>";
+		if ($result != FALSE ) {
+			print "<p>user " . $id . " has been deleted.</p>";
+		}
 	}
+
+
 }
 
 ?>

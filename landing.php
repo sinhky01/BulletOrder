@@ -43,19 +43,9 @@ function phpLink($page){
   <STYLE type="text/css">
 	h2 {
 		text-align: center;
-		color: white;
-		font-family: verdana;
+		color: #00437C;
+		font-family: arial;
 		font-size: 58px;
-		text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-	}
-	h4 {
-		text-align: right;
-		color: white;
-		font-family: verdana;
-	}
-	A {
-		color: white;
-		font-family: verdana;
 	}
 	table {
  		width: 20%;
@@ -78,16 +68,14 @@ function phpLink($page){
   </STYLE>
 </head>
 <body>
- <h2>Welcome to Speeding Bullet!</h2>
-</br>
-	<A href="http://www.gettysburg.edu/current_students/menu.dot"><h4>Click to see today's menu</h4></A>
+  <h2>Welcome to Speeding Bullet!</h2>
 
   <div class = "logo">
     <img src="logo.png" alt="Logo">
-  </div>
+  </div> 
 
   <form method = "post" action = "login.php">
-    <table class = "table">
+    <table class = "table">    
 
       <tr>
         <td colspan="3" style="color:red;"> <?php
@@ -95,14 +83,12 @@ function phpLink($page){
           echo "Invalid Email ! Retry !";}
         else if ($success == -2){
           echo "Invalid Password ! Retry !";}
-        else if ($success == -3){
-          echo "Please login first~!";}
           ?></td>
       </tr>
-     <!-- <tr>
+      <tr>
         <td/>
         <td> Login </td>
-      </tr> -->
+      </tr>
       <tr>
         <td> Email </td>
         <td><input type = 'text' name = 'email' placeholder = 'enter your email' autocomplete="on" value = '<?php echo $f_email;?>'/></td>
@@ -114,20 +100,24 @@ function phpLink($page){
       <tr>
 				<td/>
         <td><input type = 'submit' value = 'Login'/></td>
+				</form>
         <!--<td><input type = 'button' value = 'Register'/></td>
 				<A HREF="http://www.cs.gettysburg.edu/~furu01/bullet/register.php">Register Now!</A>
 -->
       </tr>
 			<tr>
 				<td/>
-				<td><A HREF="<?php echo phpLink("register.php");?>">Register Now!</A></td>
+				<FORM method="post" action="register.php">
+				<td><input type = 'submit' value = 'Register'/></td>
+				</FORM>
 			</tr>
 		  <tr>
 				<td/>
-				<td><A HREF="<?php echo phpLink("forgetPass.html");?>">Forgot Password?</A></td>
+				<FORM method="post" action="forgetPass.html">
+				<td><input type = 'submit' value = 'Forgot Password'/></td>
+				</FORM>
 			</tr>
     </table>
-  </form>
 
 </body>
 </html>
