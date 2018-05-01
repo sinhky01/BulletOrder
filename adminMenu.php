@@ -105,7 +105,26 @@ form {
 <H1>Delete User</H1>
 
 <FORM method='POST' action='adminMenu.php?op=remove'>
-E-mail: <INPUT type='text' name='email' />
+
+<?php
+$userData=$db->query("SELECT id, name FROM customer");
+while ($row = $userData->fetch()) {
+
+		$id   = $row['id'];
+		$name = $row['name'];
+
+		print "<TR>";
+
+		print "<TD>" . $id   . "</TD>\n";
+		print "<TD>" . $name . "</TD>\n";
+
+		print "<TD><INPUT type='checkbox' name='cb[]' value='" . $id . "' /></TD>\n";
+
+		print "</TR>\n";
+
+	}
+?>
+
 <INPUT type='submit' value='Delete User' />
 </FORM>
 
