@@ -126,11 +126,12 @@ else {
 			</HEAD>
 
 			<BODY>  <DIV class="row"> 
-					 <ul>
+					 <ul>				
+				<li><a href="logout.php">Logout</a></li>
   				<li><a href="order_main.php">Order Page</a></li>
   				<li><a href="past_orders.php">Past Orders</a></li>
   				<li><a href="profile.php">Profile</a></li>
-				</ul> 
+				</ul>
 				</DIV>
 				<DIV class="row">
 					</br></br>
