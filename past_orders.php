@@ -21,7 +21,8 @@ function phpLink($page){
 ?>
 <html>
 <head>
-  <title>Bullet Order Page</title>	 <ul>
+  <title>Bullet Order Page</title>						 <ul>				
+				<li><a href="logout.php">Logout</a></li>
   				<li><a href="order_main.php">Order Page</a></li>
   				<li><a href="past_orders.php">Past Orders</a></li>
   				<li><a href="profile.php">Profile</a></li>
