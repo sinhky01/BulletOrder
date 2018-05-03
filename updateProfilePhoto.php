@@ -1,4 +1,4 @@
-a<?php
+<?php
 
 // assume that user's file will be saved in
 // uploaded/ (in current folder)
@@ -8,16 +8,13 @@ a<?php
 
 $msg = saveFile($_FILES['profilepicture']);
 
-echo "<P>$msg1</P>\n" ;
-
 function saveFile($filedata) {
+include_once("db_connect.php");  // $db
+session_start();
+$email = $_SESSION["email"];
 
     // 0. for debugging
-    printf("<PRE>\n");
-	echo "hello";
-    print_r($filedata);
-    printf("</PRE>\n");
-
+   // print_r($filedata);
     $msg = "";
 
     // 1. important variables from $filedata
@@ -26,32 +23,25 @@ function saveFile($filedata) {
 	$tmpfn = $filedata['tmp_name'];
 	$type = $filedata['type'];
 
+	$str="UPDATE customer SET picture='" . $userfn . "' WHERE email='" . $email . "';";
 
-    printf("<P>Step 1 done</P>");
-
+	$result1 = $db->query($str);
 
     // 2. check file size for (0, 5MB]
 
-
 	if ($size == 0) {
-		echo "file is empty";
+		$msg = "file is empty";
 		return $msg;
 	}
 	else if ($size > 5200000 ) {
 		$msg = "file is too large";
 		return $msg;	
 	}
-   
-    printf("<P>Step 2 done</P>");
-
+  
     // 3. get uploaded file data info from temp folder
 
 	$imginfo = getimagesize($tmpfn);
 	
-
-    printf("<P>Step 3 done</P>");
-
-
     // 4. check mime type (is it an image?)
 
 	if ($imginfo == FALSE) {
@@ -60,27 +50,13 @@ function saveFile($filedata) {
 	}
 
 
-    printf("<P>Step 4 done</P>");
-
-
-    // 5check for allowed types (jpg/gif/png) 
-
-
-    printf("<P>Step 5 done</P>\n");
-
     // 6. copy uploaded file from temp folder to correct folder
     $folder = "./uploaded/";
     $fn = $folder . $userfn;
 
     $result = move_uploaded_file($tmpfn, $fn);
 
-    print "<P>Saving uploaded file as " . $fn . "</P>\n";
-
-
-    printf("<P>Step 6 done</P>");
-
     // 7. check if copying was successful
-//something in the if statement is invalid php
 	
 	if ($result != FALSE ) {
 		$msg = "<P> Successfully uploaded $userfn</P>\n";
@@ -94,9 +70,16 @@ function saveFile($filedata) {
  //  		 printf("false");
 		$msg = "<P> Error uploading $userfn</P>\n";
 	}
-
     // 8. return success or failure message
     return $msg;
 }
-
+ //echo $msg;
 ?>
+<HTML>
+<HEAD> <TITLE> </TITLE>
+</HEAD>
+<BODY>
+ <?php print $msg; ?>
+</BODY>
+</HTML>
+
