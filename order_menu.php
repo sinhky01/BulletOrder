@@ -1,15 +1,37 @@
 <?php
 include_once('db_connect.php');
-$cate = $_POST['select_cate'];
-$qStr = "SELECT food.food_id, name, price, picture, category FROM food LEFT JOIN food_category ON food.food_id = food_category.food_id WHERE category = '".$cate."';";
+
+$qStr = "SELECT DISTINCT category FROM food_category;";
 $t1Data = $db->query($qStr);
+$list = $t1Data->fetchAll();
+$cates = array();
+foreach ($list as $key) {
+  $qStr = "SELECT food.food_id, name, price, picture, category FROM food LEFT JOIN food_category ON food.food_id = food_category.food_id WHERE category = '".$key[0]."';";
+  $t1Data = $db->query($qStr);
+  $food_list = $t1Data->fetchAll();
+  array_push($cates, $food_list);
+}
+// print_r $cates;
+
 ?>
 <html>
 <head>
   <title>Bullet Order Page</title>
 
+  <!-- <script>
+  function hide() {
+    var meal = document.getElementById("divmeal");
+    var misc = document.getElementById("divmisc");
+
+      meal.style.display = "none";
+      misc.style.display = "block";
+    }
+  window.onload = hide;
+  </script> -->
+
+
   <ul>
-    <li><a href="order_main.php">Order Page</a></li>
+    <li><a href="order_menu.php">Order Page</a></li>
     <li><a href="past_orders.php">Past Orders</a></li>
     <li><a href="profile.php">Profile</a></li>
   </ul>
@@ -26,7 +48,7 @@ $t1Data = $db->query($qStr);
     font-size: 20px;
     width: 100%;
   }
-  ul {
+  ul {$t1Data
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -52,6 +74,12 @@ $t1Data = $db->query($qStr);
 </head>
 
 <body>
+  <!-- <center><?php
+  foreach ($list as $key) {
+    print "<button id = button" . $key[0] . " type='button'>" . $key[0] . "</button>";
+  }
+
+  ?></center> -->
   <form method="post" action="order_confirm.php">
     <table align="center" style="border:none;width:90%;cellspacing = 0; cellpadding = 5">
       <tr>
@@ -63,26 +91,24 @@ $t1Data = $db->query($qStr);
       </tr>
       <tr>
         <?php
-        if ($t1Data != FALSE){
-          $nRows = $t1Data->rowCount();
-          $nCols = $t1Data->columnCount();
-          while ($row = $t1Data->fetch()) {
+        foreach ($cates as $food_list) {
+          foreach ($food_list as $key) {
+            $cate = $key['category'];
+            print "<div id = div".$cate . ">";
             print "<tr>";
-            $cate = $row['category'];
-            $name = $row['name'];
-            $image = $row['picture'];
-            $id = $row['food_id'];
-            $price = $row['price'];
+            $name = $key['name'];
+            $image = $key['picture'];
+            $id = $key['food_id'];
+            $price = $key['price'];
             print "<TD>" . $cate . "</TD>";
             print "<TD>" . $name . "</TD>";
             print "<TD><img src='".$image."' alt='".$name."' height=128></TD>";
             print "<TD>" . $price . "</TD>";
             print "<TD><Input type = 'checkbox' name = 'cborder[]' value = '" . $id . "'></TD>\n";
             print "</tr>";
+            print "</div>";
+
           }
-        }
-        else{
-          print "<td>There is no food left.</td>";
         }
         ?>
       </tr>

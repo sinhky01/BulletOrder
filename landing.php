@@ -2,7 +2,6 @@
 //landing.php is the main page where a user can enter there information or register for a new login
 // phpinfo();
 include_once("db_connect.php"); //$db
-
 if(isset($_GET['password']) && !empty($_GET['password'])){
   $success = mysql_escape_string($_GET['password']); // Set email variable
 }
@@ -11,13 +10,11 @@ if(isset($_GET['email']) && !empty($_GET['email'])){
 }
 $qStr = "SELECT * FROM customer;";
 $t1Data = $db->query($qStr);
-
 ?>
 <?php
 function phpAlert($msg) {
     echo '<script type="text/javascript">alert("' . $msg . '")</script>';
 }
-
 function phpLink($page){
     $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
     $link_element = explode("/", $actual_link);
@@ -43,9 +40,22 @@ function phpLink($page){
   <STYLE type="text/css">
 	h2 {
 		text-align: center;
-		color: #00437C;
-		font-family: arial;
+		color: white;
+		font-family: verdana;
 		font-size: 58px;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	}
+  .shadow {
+    text-shadow: 0px 0px 3px #000, -1px -1px #000, 1px 1px #000;
+  }
+	h4 {
+		text-align: right;
+		color: white;
+		font-family: verdana;
+	}
+	A {
+		color: white;
+		font-family: verdana;
 	}
 	table {
  		width: 20%;
@@ -69,13 +79,15 @@ function phpLink($page){
 </head>
 <body>
   <h2>Welcome to Speeding Bullet!</h2>
+</br>
+	<A class = "shadow" href="http://www.gettysburg.edu/current_students/menu.dot"><h4>Click to see today's menu</h4></A>
 
   <div class = "logo">
     <img src="logo.png" alt="Logo">
-  </div> 
+  </div>
 
   <form method = "post" action = "login.php">
-    <table class = "table">    
+    <table class = "table">
 
       <tr>
         <td colspan="3" style="color:red;"> <?php
@@ -85,10 +97,10 @@ function phpLink($page){
           echo "Invalid Password ! Retry !";}
           ?></td>
       </tr>
-      <tr>
+    <!--  <tr>
         <td/>
         <td> Login </td>
-      </tr>
+      </tr> -->
       <tr>
         <td> Email </td>
         <td><input type = 'text' name = 'email' placeholder = 'enter your email' autocomplete="on" value = '<?php echo $f_email;?>'/></td>
@@ -100,24 +112,20 @@ function phpLink($page){
       <tr>
 				<td/>
         <td><input type = 'submit' value = 'Login'/></td>
-				</form>
         <!--<td><input type = 'button' value = 'Register'/></td>
 				<A HREF="http://www.cs.gettysburg.edu/~furu01/bullet/register.php">Register Now!</A>
 -->
       </tr>
 			<tr>
 				<td/>
-				<FORM method="post" action="register.php">
-				<td><input type = 'submit' value = 'Register'/></td>
-				</FORM>
+				<td class = "shadow"><A HREF="<?php echo phpLink("register.php");?>">Register Now!</A></td>
 			</tr>
 		  <tr>
 				<td/>
-				<FORM method="post" action="forgetPass.html">
-				<td><input type = 'submit' value = 'Forgot Password'/></td>
-				</FORM>
+				<td class = "shadow"><A HREF="<?php echo phpLink("forgetPass.html");?>">Forgot Password?</A></td>
 			</tr>
     </table>
+  </form>
 
 </body>
 </html>

@@ -2,7 +2,7 @@
 include_once('db_connect.php');
 session_start();
 $email = $_SESSION["email"];
-echo "<P>Useremail: " .  $email  . "</P>\n";
+// echo "<P>Useremail: " .  $email  . "</P>\n";
 if ($email == NULL){
   print "<h1>Please login first!!!</h1>";
   $url = phpLink('landing.php?password=-3');
@@ -13,26 +13,26 @@ $cid = $email;
 $order_status = 2;
 $location = "bullet001";
 $time =  date("his") .  date("Ymd");
-print $time;
+// print $time;
 $add1 = "INSERT INTO orders(order_id, cid, order_status, location) VALUES (".$time.",'".$cid."',". $order_status.",'".  $location . "');";
 //print "\n" . $add1;
 $result1 = $db->query($add1);
-if($result1 != FALSE){
-  print "<p>added.</p>";
-}
-else{
-  print "<p>not added.</p>";
-}
+// if($result1 != FALSE){
+//   print "<p>added.</p>";
+// }
+// else{
+//   print "<p>not added.</p>";
+// }
 foreach ($list AS $id){
   $add2 = "INSERT INTO order_info(food_id, order_id) VALUES (".$id.",". $time. ");";
  // print "\n" . $add2;
   $result2 = $db->query($add2);
-  if($result2 != FALSE){
-    print "<p>added.</p>";
-  }
-  else{
-    print "<p>not added.</p>";
-  }
+  // if($result2 != FALSE){
+  //   print "<p>added.</p>";
+  // }
+  // else{
+  //   print "<p>not added.</p>";
+  // }
 }
 if($result2 != FALSE){// && $result2 != FALSE){
   // confirmation email
@@ -53,12 +53,12 @@ if($result2 != FALSE){// && $result2 != FALSE){
   $e_content .= "total = ". $total_price . " \n";
   $header = "From: $e_name <$e_email>\r\n";
   $result = mail($to, $subject, $e_content, $header);
-  if ($result == FALSE){
-    echo "<p> A confirmation Email was not sent.</p\n>";
-  }
-  else {
-    echo "<p> A confirmation Email was sent.</p\n>";
-  }
+  // if ($result == FALSE){
+  //   echo "<p> A confirmation Email was not sent.</p\n>";
+  // }
+  // else {
+  //   echo "<p> A confirmation Email was sent.</p\n>";
+  // }
 }
 else{
   echo "<p> Order not created.</p\n>";
@@ -97,7 +97,7 @@ else{
 	background-color: white;
 	color: #002F6C;
 	font-family: arial;
-  }	
+  }
 h1 {
 	font-size: 32px;
 }
@@ -105,15 +105,15 @@ h1 {
 						list-style-type: none;
 						margin: 0;
 						padding: 0;
-						overflow: hidden;	
-						color: white;	
+						overflow: hidden;
+						color: white;
 						background-color: #002F6C;
 					}
 					li {
 
-						float: right;	
+						float: right;
 						background-color: #002F6C;
-						color: white;	
+						color: white;
 
 					}
 					li a {
@@ -132,23 +132,23 @@ h1 {
 </head>
 
 <body>
- <DIV class="row" font-size="20px"> 
+ <DIV class="row" font-size="20px">
 					 <ul>
   				<li><a href="order_main.php">Order Page</a></li>
   				<li><a href="past_orders.php">Past Orders</a></li>
   				<li><a href="profile.php">Profile</a></li>
-				</ul> 
+				</ul>
 				</DIV>
 </br></br>
-     <DIV align="center" > 
+     <DIV align="center" >
        <h1> Your order is completed. A confirmation email has been sent. </h1>
 	</br> </br>
 	</DIV>
- 
+
  <form method="post" action="order_confirm.php">
     <table align="center" style="border: none;width:90%;cellspacing = 0; cellpadding = 5">
 
- 
+
       <tr>
         <th>Order List</th>
         <th>Price</th>

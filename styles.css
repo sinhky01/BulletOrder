@@ -7,9 +7,11 @@
 */
 body {
   background-image: url("bulletbg.jpeg");
-  background-color: white;
+  background-color: #dbdfe5;
+  background-size: 100%, 90%;
   padding-left: 10%;
   padding-right: 10%
+
 }
 
 table td{

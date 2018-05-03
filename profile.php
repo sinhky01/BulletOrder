@@ -17,7 +17,7 @@ if ($result == FALSE) {
 else {
 	$phoneNum = $user['phonenum'];
 	$balance = $user['balance'];
-	
+
 }
 
 ?>
@@ -44,7 +44,7 @@ else {
 						color: white;
 						font-family: arial;
 						text-align: center;
-					}	
+					}
 					body {
 						color: #002F6C;
 					}
@@ -91,15 +91,15 @@ else {
 						list-style-type: none;
 						margin: 0;
 						padding: 0;
-						overflow: hidden;	
-						color: white;	
+						overflow: hidden;
+						color: white;
 						background-color: #002F6C;
 					}
 					li {
 
-						float: right;	
+						float: right;
 						background-color: #002F6C;
-						color: white;	
+						color: white;
 
 					}
 					li a {
@@ -118,12 +118,12 @@ else {
 
 			</HEAD>
 
-			<BODY>  <DIV class="row"> 
+			<BODY>  <DIV class="row">
 					 <ul>
-  				<li><a href="order_main.php">Order Page</a></li>
+  				<li><a href="order_menu.php">Order Page</a></li>
   				<li><a href="past_orders.php">Past Orders</a></li>
   				<li><a href="profile.php">Profile</a></li>
-				</ul> 
+				</ul>
 				</DIV>
 				<DIV class="row">
 					</br></br>
