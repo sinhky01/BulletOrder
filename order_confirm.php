@@ -35,6 +35,12 @@ $list = $_POST['cborder'];
 </head>
 
 <body>
+						 <ul>				
+				<li><a href="logout.php">Logout</a></li>
+  				<li><a href="order_main.php">Order Page</a></li>
+  				<li><a href="past_orders.php">Past Orders</a></li>
+  				<li><a href="profile.php">Profile</a></li>
+				</ul>
   <form method="post" action="order_confirm.php">
     <table align="center" style="border:none;width:80%;cellspacing = 0; cellpadding = 5">
 
