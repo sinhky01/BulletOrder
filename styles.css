@@ -6,7 +6,7 @@
 
 */
 body {
-  background-image: url("bulletbg.jpeg");
+  background-image: linear-gradient(to bottom, rgba(255,255,255,0.3) 0%,rgba(255,255,255,0.3) 100%), url("bulletbg.jpeg");
   background-color: #dbdfe5;
   background-size: 100%, 90%;
   padding-left: 10%;
@@ -33,4 +33,5 @@ img{
   width: 20%;
   position: absolute;
   bottom: 10%;
+  right: 5%;
 }
