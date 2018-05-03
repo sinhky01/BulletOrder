@@ -12,11 +12,18 @@ $user = $result->fetch();
 //print_r( $user);
 
 if ($result == FALSE) {
-//	echo "here";
+	echo "invalid user";
 }
 else {
 	$phoneNum = $user['phonenum'];
 	$balance = $user['balance'];
+	$image = $user['picture'];
+	if ($image === NULL ) {
+		//$prompt = "You don't have a profile photo yet! Upload one to the right!";
+	}
+	else {
+	$image = "./uploaded/" . $image;
+	}
 	
 }
 
@@ -133,7 +140,7 @@ else {
 				<DIV class="container">
 
 					<DIV class="row">
-						<DIV class="col-md-4"><P class="gray" >(profile picture will go here)</P></DIV>
+						<DIV class="col-md-4"><P class="gray" ><?php print"<img src='".$image."' alt='upload a photo to the right!' height=128>"; ?></P></DIV>
 						<DIV class="col-md-8"> <table>
 							<tr><td> Current Balance: $<?php echo $balance ?> </td>
 								<td> <a href="update_balance.php">Add Money</a></td>
