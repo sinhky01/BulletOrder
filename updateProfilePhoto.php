@@ -7,7 +7,8 @@
 // call the function, saveFile, for actual uploading.
 
 $msg = saveFile($_FILES['profilepicture']);
-
+//Abby Shope
+//uploads new profile photo if user is logged in
 function saveFile($filedata) {
 include_once("db_connect.php");  // $db
 session_start();
@@ -75,9 +76,56 @@ $email = $_SESSION["email"];
 }
  //echo $msg;
 ?>
+<!-- Abby Shoep -->
 <HTML>
-<HEAD> <TITLE> </TITLE>
+<HEAD> <TITLE> Speeding Bullet  </TITLE>
+
+<META name="viewport" content="width=device-width, initial-scale=1">
+
+			<LINK rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+				<LINK rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+
+					<SCRIPT src="js/jquery-1.11.3.min.js"> </SCRIPT>
+					<SCRIPT src="js/bootstrap.min.js">     </SCRIPT>
+
+					<STYLE type="text/css">
+					/*for all paragraphs*/
+					p {
+						padding: 100px;
+						background: #002F6C;
+						color: white;
+						font-family: arial;
+						text-align: center;
+					}	
+					body {
+						color: #002F6C;
+					}
+					p.gray {
+						padding: 20px;
+						font-size: 15px;
+						font-weight: bold;
+						text-align: center;
+						background: #dbdfe5;
+						font-family: arial;
+					}
+					h1 {
+						text-align: center;
+						color: #002F6C;
+						font-family: arial;
+						font-size: 72px;
+					}
+					body {
+						text-align: center;
+						font-family: arial;
+					}
+					input {
+						margin-bottom: 8px;
+					}
+</STYLE>
+
 </HEAD>
 <BODY>
+ <?php print $msg; ?> </br>
+<td> <a href="profile.php">Click here to return to profile.</a>
 </BODY>
 </HTML>
