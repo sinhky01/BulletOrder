@@ -5,6 +5,7 @@
 include_once('db_connect.php');
 //print_r($_POST);
 
+//checks that passwords match, updates current user password
 function changePassword($data, $reset_link) {
 
 	global $db;
@@ -14,7 +15,7 @@ function changePassword($data, $reset_link) {
 
 	if ($newPassword1 != $newPassword2) {
 		print "new passwords do not match";
-	}	//TODO location!!!
+	}	
 	else {
 		$pass_return = "SELECT * FROM customer WHERE email='" . $email . "' AND reset=" . $reset_link . ";";
 		$result = $db->query($pass_return);
