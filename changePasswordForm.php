@@ -13,7 +13,7 @@ if ($op == 'update') {
 }
 
 //Abby Shope
-
+//checks that new passwords match and updates password if user exists in customer table
 function changePassword($data, $reset_link) {
 
 	global $db;
@@ -23,10 +23,10 @@ function changePassword($data, $reset_link) {
 
 	if ($newPassword1 != $newPassword2) {
 		print "new passwords do not match";
-	}	//TODO location!!!
+	}	
 	else {
 		$pass_return = "SELECT * FROM customer WHERE email='" . $email . "' AND reset='" . $reset_link . "';";
-		print $pass_return;
+		//print $pass_return;
 		$result = $db->query($pass_return);
 		if ($result == FALSE) {
 			print "error, could not update password";
@@ -187,7 +187,7 @@ function changePassword($data, $reset_link) {
 								</ul>
 							</div>
 						</nav>
-
+<!-- most of this was done by Abby -->
 						<H1> Update Password </H1>
 
 						<DIV class="container">
