@@ -94,7 +94,15 @@ $list = $_POST['cborder'];
         <a class="navbar-brand" href="#">BulletOrder</a>
       </div>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="logout.php">Logout</a></li>
+        <li><a href="logout.php"><?php
+        session_start(); //login session
+        if ($email == NULL){
+          echo "Login";
+        }
+        else{
+          echo "Logout";
+        }
+        ?></a></li>
         <li><a href="order_menu.php">Order Page</a></li>
         <li><a href="past_orders.php">Past Orders</a></li>
         <li><a href="profile.php">Profile</a></li>

@@ -3,6 +3,10 @@ include_once('db_connect.php');
 session_start();
 $email = $_SESSION["email"];
 //echo "<P>Useremail: " .  $email  . "</P>\n";
+if ($email == null){
+	$url = phpLink('landing.php?');
+	header( "Location: $url" );
+}
 
 $str = "SELECT * FROM customer WHERE email='" . $email . "';";
 
@@ -18,14 +22,25 @@ else {
 	$phoneNum = $user['phonenum'];
 	$balance = $user['balance'];
 	$image = $user['picture'];
+	$admin = $user['admin'];
 	if ($image === NULL ) {
 		//$prompt = "You don't have a profile photo yet! Upload one to the right!";
 	}
 	else {
-	$image = "./uploaded/" . $image;
+		$image = "./uploaded/" . $image;
 	}
 
 }
+
+function phpLink($page){
+    $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    $link_element = explode("/", $actual_link);
+    $curr_page = $link_element[5];
+    $page_link = str_replace($curr_page,$page,$actual_link);
+    echo $page_link;
+    return $page_link;
+}
+
 
 ?>
 
@@ -127,69 +142,82 @@ else {
 					}
 					body {
 						background-image: linear-gradient(to bottom, rgba(255,255,255,0.3) 0%,rgba(255,255,255,0.3) 100%), url("bulletbg.jpeg");
-					  background-color: #dbdfe5;
-					  background-size: 100%, 90%;
-					  padding-left: 10%;
-					  padding-right: 10%
+						background-color: #dbdfe5;
+						background-size: 100%, 90%;
+						padding-left: 10%;
+						padding-right: 10%
 					}
 
-				</STYLE>
+					</STYLE>
 
-			</HEAD>
+				</HEAD>
 
-			<BODY>  <DIV class="row">
-				<nav class="navbar navbar-light" style="background-color: #002F6C;">
-	        <div class="container-fluid">
-	          <div class="navbar-header">
-	            <a class="navbar-brand" href="#">BulletOrder</a>
-	          </div>
-	          <ul class="nav navbar-nav navbar-right">
-	            <li><a href="logout.php">Logout</a></li>
-	            <li><a href="order_menu.php">Order Page</a></li>
-	            <li><a href="past_orders.php">Past Orders</a></li>
-	            <li><a href="profile.php">Profile</a></li>
-	          </ul>
-	        </div>
-	      </nav>
+				<BODY>  <DIV class="row">
+					<nav class="navbar navbar-light" style="background-color: #002F6C;">
+						<div class="container-fluid">
+							<div class="navbar-header">
+								<a class="navbar-brand" href="#">BulletOrder</a>
+							</div>
+							<ul class="nav navbar-nav navbar-right">
+								<li><a href="logout.php"><?php
+				        session_start(); //login session
+				        if ($email == NULL){
+				          echo "Login";
+				        }
+				        else{
+				          echo "Logout";
+				        }
+				        ?></a></li>
+								<li><a href="order_menu.php">Order Page</a></li>
+								<li><a href="past_orders.php">Past Orders</a></li>
+								<li><a href="profile.php">Profile</a></li>
+							</ul>
+						</div>
+					</nav>
 
 				</DIV>
 				<DIV class="row">
-					</br>
-					<H1> Your Speeding Bullet Profile </H1>
-				</br></br>
-				</DIV>
-				<DIV class="container">
+				</br>
+				<H1> Your Speeding Bullet Profile </H1>
+			</br></br>
+		</DIV>
+		<DIV class="container">
 
-					<DIV class="row">
-						<DIV class="col-md-4"><P class="gray" ><?php print"<img src='".$image."' alt='upload a photo to the right!' height=128>"; ?></P></DIV>
-						<DIV class="col-md-8"> <table>
-							<tr><td> Current Balance: $<?php echo $balance ?> </td>
-								<td> <a class="thick" href="update_balance.php">Add Money</a></td>
-							</tr>
-							<tr> <td> Phone number: <?php echo $phoneNum ?> </td>
-								<td> <a class="thick" href="changePhoneForm.php">Update Phone Number</a></td>
-							</tr>
-							<tr>
-							<td>  </td>
-							<td> <a class="thick" href="changePasswordForm.php">Change Password</a></td></tr>
+			<DIV class="row">
+				<DIV class="col-md-4"><P class="gray" ><?php print"<img src='".$image."' alt='upload a photo to the right!' height=128>"; ?></P></DIV>
+				<DIV class="col-md-8"> <table>
+					<tr><td> Current Balance: $<?php echo $balance ?> </td>
+						<td> <a class="thick" href="update_balance.php">Add Money</a></td>
+					</tr>
+					<tr> <td> Phone number: <?php echo $phoneNum ?> </td>
+						<td> <a class="thick" href="changePhoneForm.php">Update Phone Number</a></td>
+					</tr>
+					<tr>
+						<td>  </td>
+						<td> <a class="thick" href="changePasswordForm.php">Change Password</a></td></tr>
 
-							<tr><td>  </td>
-								<td> <a class="thick" href="changePhotoForm.php">Update Profile Picture</a></td>
-							</tr>
+						<tr><td>  </td>
+							<td> <a class="thick" href="changePhotoForm.php">Update Profile Picture</a></td>
+						</tr>
 
-							<tr><td>  </td>
-								<td> <a class="thick" href="past_orders.php">Past Orders</a></td>
-							</tr>
-							<tr><td>  </td>
-								<td> <a class="thick" href="logout.php">Logout</a></td>
-							</tr>
-						</table></DIV>
-					</DIV> <!-- closes row 1 -->
-					<DIV class="row">
-						<DIV class="col-md-13"><P class="gray" >CS360 Spring 2018 </br> Abby Shope </br> Ruiwen Fu </br> Kyle</P></DIV>
+						<tr><td>  </td>
+							<td> <a class="thick" href="past_orders.php">Past Orders</a></td>
+						</tr>
+						<tr><td>  </td>
+							<td> <a class="thick" href="logout.php">Logout</a></td>
+						</tr>
+						<?php
+							if ($admin == 1){
+								print "<tr><td>  </td>\n <td> <a class='thick'  href='adminMenu.php'>Admin Menu</a></td>\n</tr>";
+							}
+						?>
+					</table></DIV>
+				</DIV> <!-- closes row 1 -->
+				<DIV class="row">
+					<DIV class="col-md-13"><P class="gray" >CS360 Spring 2018 </br> Abby Shope </br> Ruiwen Fu </br> Kyle</P></DIV>
 				</DIV> <!-- closes row 2 -->
 
-				</DIV> <!-- closes container -->
+			</DIV> <!-- closes container -->
 
-			</BODY>
-</HTML>
+		</BODY>
+	</HTML>

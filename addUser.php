@@ -47,6 +47,8 @@ if($result1 != FALSE){// && $result2 != FALSE){
   }
   else {
     echo "<p> A confirmation Email was sent, please check your email.</p\n>";
+    $url = phpLink('landing.php');		
+ 		print "<A href='" . $url . "' >Click here for landing page. ---</A>";
   }
 }
 else{

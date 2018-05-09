@@ -20,6 +20,8 @@ if(isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['key']) && !e
     print "<h1>your account has been confirmed.</h1>";
     $clear = "UPDATE customer SET key_confirm = '-1', confirm = 1 WHERE email = '" . $email . "' ;";
     $result2 = $db->query($clear);
+    $url = phpLink('landing.php');		
+    print "<A href='" . $url . "' >Click here for landing page. ---</A>";
   }
   else{
     print "<h1>Verification failed</h1>";
@@ -27,5 +29,15 @@ if(isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['key']) && !e
   }
 }else{
   print "<h1>invalid verification link</h1>";
+}
+?>
+<?php
+function phpLink($page){
+    $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    $link_element = explode("/", $actual_link);
+    $curr_page = $link_element[5];
+    $page_link = str_replace($curr_page,$page,$actual_link);
+    echo $page_link;
+    return $page_link;
 }
 ?>

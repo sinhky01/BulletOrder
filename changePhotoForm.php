@@ -1,6 +1,20 @@
 <?php
 session_start();
 $email = $_SESSION["email"];
+if ($email == null){
+	$url = phpLink('landing.php?');
+	header( "Location: $url" );
+}
+
+function phpLink($page){
+    $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    $link_element = explode("/", $actual_link);
+    $curr_page = $link_element[5];
+    $page_link = str_replace($curr_page,$page,$actual_link);
+    echo $page_link;
+    return $page_link;
+}
+
 ?>
 
 
@@ -116,7 +130,15 @@ $email = $_SESSION["email"];
 							<a class="navbar-brand" href="#">BulletOrder</a>
 						</div>
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="logout.php">Logout</a></li>
+							<li><a href="logout.php"><?php
+			        session_start(); //login session
+			        if ($email == NULL){
+			          echo "Login";
+			        }
+			        else{
+			          echo "Logout";
+			        }
+			        ?></a></li>
 							<li><a href="order_menu.php">Order Page</a></li>
 							<li><a href="past_orders.php">Past Orders</a></li>
 							<li><a href="profile.php">Profile</a></li>

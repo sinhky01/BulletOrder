@@ -8,7 +8,7 @@
 body {
   background-image: linear-gradient(to bottom, rgba(255,255,255,0.3) 0%,rgba(255,255,255,0.3) 100%), url("bulletbg.jpeg");
   background-color: #dbdfe5;
-  background-size: 100%, 90%;
+  background-size: 100%, 100%;
   padding-left: 10%;
   padding-right: 10%
 
@@ -29,9 +29,9 @@ img{
   float: right;
 }
 
-.logo{
-  width: 20%;
+.glogo{
+  width: 5%;
   position: absolute;
-  bottom: 10%;
+  bottom: 5%;
   right: 5%;
 }

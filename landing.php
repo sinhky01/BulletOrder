@@ -106,22 +106,44 @@ body {
 }
 .central{
  position: absolute;
- left: 10%;
- top: 5%;
- width: 60%;
- height: 50%;
+ left: 5%;
+ top: 25%;
+ width: 68%;
+ /* height: 20%; */
  padding: 5%
 }
 </STYLE>
 </head>
 <body>
+  <nav class="navbar navbar-light" style="background-color: #002F6C;">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">BulletOrder</a>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="logout.php"><?php
+        session_start(); //login session
+        if ($email == NULL){
+          echo "Login";
+        }
+        else{
+          echo "Logout";
+        }
+        ?></a></li>
+        <li><a href="order_menu.php">Order Page</a></li>
+        <li><a href="past_orders.php">Past Orders</a></li>
+        <li><a href="profile.php">Profile</a></li>
+      </ul>
+    </div>
+  </nav>
+
   <div class = "top">
     <h2 class="shadow text3" >Welcome to Speeding Bullet!</h2>
   </div>
 </br>
 
-<div class = "logo">
-  <img src="logo.png" alt="Logo">
+<div class = "glogo">
+  <img src="logo.png" alt="Logo" style="width: 5%; position: absolute; bottom: 5%; right: 5%">
 </div>
 
 
