@@ -1,5 +1,6 @@
 The url for the landing page is http://cs.gettysburg.edu/~furu01/bullet/landing.php
 
-Two existing users are ring@ring.com with password "qwerty" and carl@gmail.com with password "password".
+Regular user email: shopab01@gettysburg.edu password: password
+Admin email: sinhky01@gettysburg.edu password: qwerty
 
-As far as we know, everything works.
+We're aware that prices should probably be a double but we left it as an int because $550 calzones are funny. :)
