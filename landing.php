@@ -1,4 +1,6 @@
 <?php
+//Ruiwen wrote most of the landing page
+//Abby did a bit of editing and design stuff
 //landing.php is the main page where a user can enter there information or register for a new login
 // phpinfo();
 include_once("db_connect.php"); //$db
