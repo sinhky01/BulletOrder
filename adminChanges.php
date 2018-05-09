@@ -1,4 +1,6 @@
 <?php
+//Kyle SInhart
+//functions for adminMenu to use
 include_once("db_connect.php");
 function addMenuItem($data){
 	global $db;
