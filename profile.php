@@ -1,4 +1,6 @@
 <?php
+//Abby Shope
+
 include_once('db_connect.php');
 session_start();
 $email = $_SESSION["email"];
@@ -7,6 +9,8 @@ if ($email == null){
 	$url = phpLink('landing.php?');
 	header( "Location: $url" );
 }
+
+//Gets user information to display on user profile page 
 
 $str = "SELECT * FROM customer WHERE email='" . $email . "';";
 
@@ -47,7 +51,7 @@ function phpLink($page){
 
 <HTML>
 	<HEAD>
-
+		<!-- Abby Shope -->
 		<TITLE>Your Speeding Bullet Profile</TITLE>
 
 		<META name="viewport" content="width=device-width, initial-scale=1">
