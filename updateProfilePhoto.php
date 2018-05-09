@@ -1,4 +1,6 @@
-a<?php
+<?php
+//Abby Shope
+
 
 // assume that user's file will be saved in
 // uploaded/ (in current folder)
@@ -8,8 +10,8 @@ a<?php
 
 $msg = saveFile($_FILES['profilepicture']);
 
-echo "<P>$msg1</P>\n" ;
-
+//echo "<P>$msg1</P>\n" ;
+//adds new profile photo to database
 function saveFile($filedata) {
 
     // 0. for debugging
@@ -100,3 +102,55 @@ function saveFile($filedata) {
 }
 
 ?>
+<HTML>
+<HEAD> <TITLE> Speeding Bullet  </TITLE>
+
+<META name="viewport" content="width=device-width, initial-scale=1">
+
+			<LINK rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+				<LINK rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+
+					<SCRIPT src="js/jquery-1.11.3.min.js"> </SCRIPT>
+					<SCRIPT src="js/bootstrap.min.js">     </SCRIPT>
+
+					<STYLE type="text/css">
+					/*for all paragraphs*/
+					p {
+						padding: 100px;
+						background: #002F6C;
+						color: white;
+						font-family: arial;
+						text-align: center;
+					}	
+					body {
+						color: #002F6C;
+					}
+					p.gray {
+						padding: 20px;
+						font-size: 15px;
+						font-weight: bold;
+						text-align: center;
+						background: #dbdfe5;
+						font-family: arial;
+					}
+					h1 {
+						text-align: center;
+						color: #002F6C;
+						font-family: arial;
+						font-size: 72px;
+					}
+					body {
+						text-align: center;
+						font-family: arial;
+					}
+					input {
+						margin-bottom: 8px;
+					}
+</STYLE>
+
+</HEAD>
+<BODY>
+ <?php print $msg; ?> </br>
+<td> <a href="profile.php">Click here to return to profile.</a>
+</BODY>
+</HTML>
