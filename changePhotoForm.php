@@ -19,6 +19,7 @@ function phpLink($page){
 
 
 <HTML>
+	<!-- Most of this was Abby with some minor additions by ruiwen -->
 	<HEAD>
 
 		<TITLE>Update Photo</TITLE>
