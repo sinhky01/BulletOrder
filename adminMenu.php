@@ -1,10 +1,25 @@
 <?php
+//Kyle Sinhart
 include_once("db_connect.php");  // $db
 
 include("adminChanges.php");
 
-$qStr = "SELECT * FROM food;";
-$t1Data = $db->query($qStr);
+session_start();
+$email = $_SESSION['email'];
+if($email==null){
+	echo "<p> Invalid user account.</p\n>";
+  $url = phpLink('profile.php');
+  header( "Location: $url" );
+}
+$str = "SELECT admin FROM customer WHERE email='" . $email . "'";
+
+$result = $db->query($str);
+
+if($result==0){
+	echo "<p> Invalid user account.</p\n>";
+  $url = phpLink('profile.php');
+  header( "Location: $url" );
+}
 
 $op = $_GET['op'];
 
@@ -107,6 +122,7 @@ form {
 <FORM method='POST' action='adminMenu.php?op=remove'>
 
 <?php
+
 $userData=$db->query("SELECT id, name FROM customer");
 while ($row = $userData->fetch()) {
 
