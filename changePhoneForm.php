@@ -18,13 +18,14 @@ if ($op == 'update') {
 }
 
 //Abby Shope
+//updates user phone number
 function changePhoneNum($data, $reset_link) {
 	global $db;
 	$newNum = $data['newNum'];
 	$oldNum = $data['oldNum'];
 	if (FALSE) {
 		//TODO add error checking on phone number
-	}	//TODO location!!!
+	}	
 	else {
 		$pass_return = "SELECT * FROM customer WHERE phonenum='" . $oldNum . "' AND email='" . $email . "';";
 		print $pass_return;
@@ -101,7 +102,7 @@ function changePhoneNum($data, $reset_link) {
 
 				<BODY>
 					<H1> Update Phone Number </H1>
-
+<!-- Abby Shope -->
 					<DIV class="container">
 
 						<DIV class="row">
