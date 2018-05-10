@@ -2,7 +2,6 @@
 include_once("db_connect.php");
 if(isset($_GET['link']) && !empty($_GET['link'])){
 	$reset_link = mysql_escape_string($_GET['link']);
-	print $reset_link;
 }
 $op = $_GET['op'];
 if ($op == 'update') {
@@ -23,7 +22,7 @@ function changePassword($data, $reset_link) {
 
 	if ($newPassword1 != $newPassword2) {
 		print "new passwords do not match";
-	}	
+	}
 	else {
 		$pass_return = "SELECT * FROM customer WHERE email='" . $email . "' AND reset='" . $reset_link . "';";
 		//print $pass_return;

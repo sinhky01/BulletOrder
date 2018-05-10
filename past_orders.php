@@ -1,10 +1,19 @@
 <?php
+
+//Ruiwen Fu
+//read and display all the user's past orders.
+
 session_start();
 
 include_once("db_connect.php");
 $email = $_SESSION["email"];
+if ($email == null){
+	$url = phpLink('landing.php?');
+	header( "Location: $url" );
+}
 
-$find_orders = "SELECT order_id, order_status FROM orders WHERE cid = '" . $email ."';";
+
+$find_orders = "SELECT order_id, time FROM orders WHERE cid = '" . $email ."' ORDER BY time DESC;";
 
 $result2 = $db->query($find_orders);
 $orders = $result2->fetchAll();
@@ -120,7 +129,7 @@ function phpLink($page){
         <table align="center" style="border:none;width:80%;cellspacing = 0; cellpadding = 5">
           <tr>
             <th>Order id</th>
-            <th>Order status</th>
+            <th>Order date</th>
           </tr>
           <?php
           if ($orders != null){

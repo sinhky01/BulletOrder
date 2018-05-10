@@ -4,7 +4,12 @@
 //landing.php is the main page where a user can enter there information or register for a new login
 // phpinfo();
 include_once("db_connect.php"); //$db
-
+session_start();
+$email = $_SESSION["email"];
+if ($email != NULL){
+  $url = phpLink('profile.php');
+  header( "Location: $url" );
+}
 if(isset($_GET['password']) && !empty($_GET['password'])){
   $success = mysql_escape_string($_GET['password']); // Set email variable
 }

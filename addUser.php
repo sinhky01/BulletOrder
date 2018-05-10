@@ -5,6 +5,7 @@
 //addUser connects to the SQL database and adds the information from register.php
 include_once('db_connect.php');
 
+// function that make links works on different folder names even different servers.
 function phpLink($page){
     $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
     $link_element = explode("/", $actual_link);
@@ -35,7 +36,7 @@ function phpLink($page){
 						color: white;
 						font-family: arial;
 						text-align: center;
-					}	
+					}
 					body {
 						color: #002F6C;
 					}
@@ -82,15 +83,15 @@ function phpLink($page){
 						list-style-type: none;
 						margin: 0;
 						padding: 0;
-						overflow: hidden;	
-						color: white;	
+						overflow: hidden;
+						color: white;
 						background-color: #002F6C;
 					}
 					li {
 
-						float: right;	
+						float: right;
 						background-color: #002F6C;
-						color: white;	
+						color: white;
 
 					}
 					li a {
@@ -150,11 +151,11 @@ if($result1 != FALSE){// && $result2 != FALSE){
     echo "<p> A confirmation Email was not sent, Invalid user info.</p\n>";
     $url = phpLink('register.php');
     header( "Location: $url" );
-		
+
   }
   else {
     echo "<p> A confirmation Email was sent, please check your email.</p\n>";
-		$url = phpLink('landing.php');		
+		$url = phpLink('landing.php');
 		print "<A href='" . $url . "' >Click here for landing page. ---</A>";
   }
 }

@@ -1,4 +1,10 @@
 <?php
+//Ruiwen Fu
+// shopping cart
+// list out all the selected food
+// allow user to delete unwanted food
+
+
 include_once('db_connect.php');
 $list = $_POST['cborder'];
 ?>
@@ -131,6 +137,7 @@ $list = $_POST['cborder'];
                 print "<tr>";
                 print "<td>$name</td>\n";
                 print "<td>$price</td>\n";
+                // allow user to delete unwanted food
                 print "<TD><Input type = 'checkbox' name = 'cborder[]' value = '" . $id . "' checked ></TD>\n";
                 print "</tr>";
               }

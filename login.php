@@ -1,5 +1,10 @@
 <?php
 
+//Ruiwen Fu
+//check the user email and whether it match the password saved in db.
+// if wrong password notice wrong Password
+// if account not in db, notice invalid account
+
 // ob_start(); //ensure everything is done
 session_start(); //login session
 
@@ -50,8 +55,9 @@ function phpLink($page){
 ?>
 
 
-
 <?php
+// javascript alert
+
 function phpAlert($msg) {
     echo '<script type="text/javascript">alert("' . $msg . '")</script>';
 }

@@ -34,7 +34,7 @@ function phpLink($page){
 						color: white;
 						font-family: arial;
 						text-align: center;
-					}	
+					}
 					body {
 						color: #002F6C;
 					}
@@ -81,15 +81,15 @@ function phpLink($page){
 						list-style-type: none;
 						margin: 0;
 						padding: 0;
-						overflow: hidden;	
-						color: white;	
+						overflow: hidden;
+						color: white;
 						background-color: #002F6C;
 					}
 					li {
 
-						float: right;	
+						float: right;
 						background-color: #002F6C;
-						color: white;	
+						color: white;
 
 					}
 					li a {
@@ -111,6 +111,10 @@ function phpLink($page){
 
 include_once('db_connect.php');
 
+// Ruiwen Fu
+// reading the link sent to user's email account and change confirm in database into true
+// disable the link.
+
 if(isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['key']) && !empty($_GET['key'])){
   $email = mysql_escape_string($_GET['email']); // Set email variable
   $key = mysql_escape_string($_GET['key']); // Set hash variable
@@ -124,7 +128,7 @@ if(isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['key']) && !e
   if ($email == $pass['email']) {
     print "<h1>Verification success</h1>";
     print "<h1>your account has been confirmed.</h1>";
-		$url = phpLink('landing.php');		
+		$url = phpLink('landing.php');
 		print "<A href='" . $url . "' >Click here for landing page. ---</A>";
     $clear = "UPDATE customer SET key_confirm = '-1', confirm = 1 WHERE email = '" . $email . "' ;";
     $result2 = $db->query($clear);

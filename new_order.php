@@ -1,4 +1,11 @@
 <?php
+
+// Ruiwen Fu
+// Create a new orders
+// save to db order and order info
+// send confirmation email to user.
+
+
 include_once('db_connect.php');
 session_start();
 $email = $_SESSION["email"];

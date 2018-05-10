@@ -10,7 +10,7 @@ if ($email == null){
 	header( "Location: $url" );
 }
 
-//Gets user information to display on user profile page 
+//Gets user information to display on user profile page
 
 $str = "SELECT * FROM customer WHERE email='" . $email . "';";
 
@@ -27,8 +27,10 @@ else {
 	$balance = $user['balance'];
 	$image = $user['picture'];
 	$admin = $user['admin'];
-	if ($image === NULL ) {
+	$confirm = $user['confirm'];
+	if ($image === "logo.png" ) {
 		//$prompt = "You don't have a profile photo yet! Upload one to the right!";
+		$image = "./uploaded/default.jpeg";
 	}
 	else {
 		$image = "./uploaded/" . $image;
@@ -191,14 +193,15 @@ function phpLink($page){
 				<DIV class="col-md-4"><P class="gray" ><?php print"<img src='".$image."' alt='upload a photo to the right!' height=128>"; ?></P></DIV>
 				<DIV class="col-md-8"> <table>
 					<tr><td> Current Balance: $<?php echo $balance ?> </td>
-						<td> <a class="thick" href="update_balance.php">Add Money</a></td>
+						<!-- <td> <a class="thick" href="update_balance.php">Add Money</a></td> -->
+						<?php if ($confirm == 0){echo "<td><div style='font-weight: bold;color :red'>Please confirm your account! </div></td>";}?>
 					</tr>
 					<tr> <td> Phone number: <?php echo $phoneNum ?> </td>
 						<td> <a class="thick" href="changePhoneForm.php">Update Phone Number</a></td>
 					</tr>
 					<tr>
 						<td>  </td>
-						<td> <a class="thick" href="changePasswordForm.php">Change Password</a></td></tr>
+						<td> <a class="thick" href="forgetPass.html">Change Password</a></td></tr>
 
 						<tr><td>  </td>
 							<td> <a class="thick" href="changePhotoForm.php">Update Profile Picture</a></td>

@@ -1,4 +1,10 @@
 <?php
+
+//Ruiwen Fu
+//When clicking one of the link in the past order_id
+//direct to current page and display detail of the order
+
+
 session_start();
 
 include_once("db_connect.php");

@@ -1,5 +1,16 @@
 <?php
+//Ruiwen Fu
+//order_menu
+// list out all the food in db
+
+
 include_once('db_connect.php');
+session_start();
+$email = $_SESSION["email"];
+if ($email == null){
+	$url = phpLink('landing.php?');
+	header( "Location: $url" );
+}
 
 $qStr = "SELECT DISTINCT category FROM food_category;";
 $t1Data = $db->query($qStr);
@@ -12,6 +23,15 @@ foreach ($list as $key) {
   array_push($cates, $food_list);
 }
 // print_r $cates;
+function phpLink($page){
+    $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    $link_element = explode("/", $actual_link);
+    $curr_page = $link_element[5];
+    $page_link = str_replace($curr_page,$page,$actual_link);
+    echo $page_link;
+    return $page_link;
+}
+
 
 ?>
 <html>

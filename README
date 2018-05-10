@@ -1,6 +1,19 @@
-The url for the landing page is http://cs.gettysburg.edu/~furu01/bullet/landing.php
+BulletOrder project
 
-Regular user email: shopab01@gettysburg.edu password: password
-Admin email: sinhky01@gettysburg.edu password: qwerty
+Designer:
+        Abagale Shope
+        Kyle Sinhart
+        Ruiwen Fu
 
-We're aware that prices should probably be a double but we left it as an int because $550 calzones are funny. :)
+Informations:
+  The url for the landing page is http://cs.gettysburg.edu/~furu01/bullet/landing.php
+  Notice: only real gettysburg college email is usable to create an account. Otherwise, some features may not be used.
+
+Available test account:
+  Regular user email: shopab01@gettysburg.edu password: password
+  Admin email: sinhky01@gettysburg.edu password: qwerty
+  Empty unconfirmed user email: furu01@gettysburg.edu password: Patrick42
+
+Remarks:
+  If you find anything not working "Don't panic!", just send an email to us.
+  We're aware that prices should probably be a double but we left it as an int because $550 calzones are funny. :)

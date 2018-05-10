@@ -1,4 +1,9 @@
 <?php
+//Ruiwen Fu
+// logout
+// empty and destroy the session.
+
+
 // ob_start(); //ensure everything is done
 session_start();
 echo "<P>logging out!</P>\n";
